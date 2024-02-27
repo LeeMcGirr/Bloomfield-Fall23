@@ -9,18 +9,31 @@ public class player3D : MonoBehaviour
     //separate speed for move and look for better editor UI/UX
     public float speed = .2f;
     public float lookSpeed = 5f;
+    public float jumpForce = 50f;
     public GameObject myCam;
     //camLock controls up/down look maximums
     public float camLock = 90;
 
+    //public for debug purposes only
+    public bool jumped = false;
+    public bool canJump = true;
+
     Rigidbody myRB;
     Vector3 myLook;
+
+    void Awake()
+    {
+        //hides cursor and locks to middle of game screen
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         myRB = GetComponent<Rigidbody>();
         myLook = Vector3.zero;
+        jumped = false;
+        canJump = true;
     }
 
     // Update is called once per frame
@@ -52,6 +65,11 @@ public class player3D : MonoBehaviour
         //apply our look rotations to the player AND the camera
         transform.rotation = Quaternion.Euler(0f, myLook.x, 0f);
         myCam.transform.rotation = Quaternion.Euler(-myLook.y, myLook.x, 0f);
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jumped = true;
+        }
     }
 
     void FixedUpdate()
@@ -63,9 +81,11 @@ public class player3D : MonoBehaviour
         //use AddForce so this works with the physics engine
         //all physics engine code should go in FixedUpdate() not Update()
         myRB.AddForce(myDir * speed);
+        if (jumped && canJump)
+        {
+            Jump();
+        }
     }
-
-
     Vector3 Dir()
     {
         //first we declare a placeholder vector
@@ -75,6 +95,12 @@ public class player3D : MonoBehaviour
         float z = Input.GetAxisRaw("Vertical");
         //combine the two axes into one vector, our desired walk direction
         moveDir = new Vector3(x, 0, z);
+
+        //if(Input.GetKey(KeyCode.Space))
+        //{
+        //    moveDir.y = JumpVal();
+        //}
+
         //pass out our combined moveDir vector based off the hor/vert axes
         return moveDir;
     }
@@ -90,5 +116,20 @@ public class player3D : MonoBehaviour
         //combining them here
         deltaLook = new Vector3(rotX, rotY, 0);
         return deltaLook;  
+    }
+    void Jump()
+    {
+        myRB.AddForce(Vector3.up * jumpForce);
+        jumped = false;
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground") { canJump = true; }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        canJump = false;
     }
 }
