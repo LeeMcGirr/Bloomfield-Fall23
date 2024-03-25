@@ -114,8 +114,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7593156650101412670}
-  - component: {fileID: 6214776004794427506}
   - component: {fileID: 3607493630319534171}
+  - component: {fileID: 3694235827947139543}
   m_Layer: 0
   m_Name: PlowEnemy
   m_TagString: NPC
@@ -140,22 +140,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6214776004794427506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6169604752399282649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67dabd762f3bf9429e0bf3ac88c2493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
-  speed: 100
-  launchSpeed: 2000
-  nearPlayer: 0
 --- !u!54 &3607493630319534171
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -183,6 +167,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3694235827947139543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169604752399282649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af205f26367db794e8381bda74a305a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPlayer: {fileID: 0}
+  speed: 100
+  launchSpeed: 2000
+  nearPlayer: 0
 --- !u!1 &7877992589910772008
 GameObject:
   m_ObjectHideFlags: 0
