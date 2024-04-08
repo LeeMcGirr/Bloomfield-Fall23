@@ -11,18 +11,15 @@ public class buttonHelper : MonoBehaviour
     {
         myPlayer = FindObjectOfType<UIplayer>(); 
     }
-
     public void AddToPlayerInv(string item)
     {
         myPlayer.inventoryAdd(item);
     }
-
     public void GoToScene(string sceneName)
     {
         Debug.Log("Pressed the button!");
         SceneManager.LoadScene(sceneName);
     }
-
     public void SetName()
     {
         myPlayer.SetName();

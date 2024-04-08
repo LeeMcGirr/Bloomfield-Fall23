@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using TMPro.Examples;
 
 public class UIplayer : MonoBehaviour
 {
