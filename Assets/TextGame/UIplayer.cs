@@ -9,6 +9,8 @@ using TMPro.Examples;
 public class UIplayer : MonoBehaviour
 {
     public List<string> myInventory;
+    public int currentRunScore;
+    public int[] highScores = new int[5];
 
     [Header("SceneChange Vars")]
     public GameObject sceneChanger;
@@ -32,6 +34,9 @@ public class UIplayer : MonoBehaviour
     {
         WelcomeText = WelcomeObject.GetComponent<TextMeshProUGUI>();
         DontDestroyOnLoad(this.gameObject);
+        UIplayer[] players = FindObjectsOfType<UIplayer>();
+        Debug.Log("there are this many players: " + players.Length);
+        if(players.Length > 1) { Destroy(this.gameObject); }
     }
     // Update is called once per frame
     void Update()
@@ -52,7 +57,6 @@ public class UIplayer : MonoBehaviour
         sceneChanger.SetActive(true);
 
     }
-
     public void inventoryAdd(string item)
     {
         myInventory.Add(item);
