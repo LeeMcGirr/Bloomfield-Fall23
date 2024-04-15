@@ -15,6 +15,7 @@ public class player3D : MonoBehaviour
     public float camLock = 90;
 
     //public for debug purposes only
+    public float coyoteTimer = .2f;
     public bool jumped = false;
     public bool canJump = true;
 
@@ -130,6 +131,13 @@ public class player3D : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
+        StartCoroutine(jumpForgive(coyoteTimer));
+    }
+
+
+    IEnumerator jumpForgive(float time)
+    {
+        yield return new WaitForSeconds(time);
         canJump = false;
     }
 }

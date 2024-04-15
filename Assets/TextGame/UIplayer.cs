@@ -27,6 +27,7 @@ public class UIplayer : MonoBehaviour
 
     public string welcomeMessage;
     public string replaceText;
+    public Text text;
 
     // Start is called before the first frame update
     void Start()
