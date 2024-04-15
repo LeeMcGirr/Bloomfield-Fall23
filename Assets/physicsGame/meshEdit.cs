@@ -24,11 +24,9 @@ public class meshEdit : MonoBehaviour
     void Start()
     {
         myMesh = GetComponent<MeshFilter>().mesh;
-        myMesh.MarkDynamic();
         myRB = GetComponent<Rigidbody>();
         myMat = myRender.material;
         myMat.color = Color.white;
-        referencePos = myMesh.vertices;
     }
     public void Update()
     {
