@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 1251049228}
   - component: {fileID: 1251049232}
   - component: {fileID: 1251049233}
+  - component: {fileID: 1251049234}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -677,11 +678,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11424a87384808e4fa0ab1ceb22e4b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  lookSpeed: 20
+  speed: 20
+  lookSpeed: 50
   jumpForce: 200
   myCam: {fileID: 1645480453}
   camLock: 89
+  coyoteTimer: 0.2
   jumped: 0
   canJump: 1
 --- !u!54 &1251049233
@@ -711,6 +713,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1251049234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251049227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dae274833fae054289b2ecdc0882811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myRender: {fileID: 1251049229}
+  myMesh: {fileID: 0}
+  myMat: {fileID: 0}
+  colorOnHit: 1
+  speedStretch: 1
+  speed: 0
+  gate: 0.01
 --- !u!1 &1332373444
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class stalkerNPC : MonoBehaviour
     [Header("Explosion Vars")]
     public float expForce;
     public float expRadius;
+    public AudioSource expSound;
 
 
     // Start is called before the first frame update
@@ -85,6 +86,7 @@ public class stalkerNPC : MonoBehaviour
             Debug.Log("player hit");
             Rigidbody target = collision.gameObject.GetComponent<Rigidbody>();
             target.AddExplosionForce(expForce, transform.position - (Vector3.up * 2f), expRadius);
+            expSound.Play();
         }
     }
 }

@@ -33,13 +33,22 @@ public class meshEdit : MonoBehaviour
 
         speed = myRB.velocity.magnitude * .1f;
 
+        Vector3 placeholder = Vector3.one;
         if(speedStretch)
         {
-            float newZ = Mathf.Clamp(speed, .8f, 3f);
-            if(transform.localScale.z >= .8f && transform.localScale.z <= 3f)
+            float newZ = Mathf.Clamp(speed, .8f, 1.5f);
+            if(transform.localScale.z >= .8f && transform.localScale.z <= 1.5f)
             {
                 transform.localScale = new Vector3(1, 1, newZ);
             }
+
+            float newY = Mathf.Clamp(speed, 0.9f, 1.5f);
+            newY = 2 - newY;
+            if(transform.localScale.y >= .5f && transform.localScale.y <= 1.1f)
+            {
+                transform.localScale = new Vector3(1, newY, transform.localScale.z);
+            }
+
         }
 
     }
